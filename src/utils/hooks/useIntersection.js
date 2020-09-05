@@ -9,7 +9,6 @@ const baseOption = {
 };
 
 const useInterSection = (onIntersect, option) => {
-  console.log(onIntersect, option);
   const [ref, setRef] = useState(null);
   const checkIntersect = useCallback(([entry], observer) => {
     if (entry.isIntersecting) {
