@@ -99,14 +99,14 @@ const FeedHome = () => {
                 ? isBookmarkedData(feed.id)
                 : true;
               return (
-                <>
+                <React.Fragment key={feed.id}>
                   {isActive && (
                     <Feed isOnlyBookmarked={isOnlyBookmarked} feed={feed} />
                   )}
                   <div
                     ref={i === feedData.length - 1 && !isLast ? setRef : null}
                   ></div>
-                </>
+                </React.Fragment>
               );
             })}
           </ul>

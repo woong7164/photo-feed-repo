@@ -16,7 +16,7 @@ const Feed = ({ feed, isOnlyBookmarked }) => {
           <span>
             <div className="profile">
               <img src={feed.profile_image_url} alt=""></img>
-              <p>{feed.nickname + '/' + feed.id}</p>
+              <p>{feed.nickname}</p>
             </div>
             <img className="boxImg" src={feed.image_url} alt="" />
             <BookMark id={feed.id} setIsDeleted={setIsDeleted} />
