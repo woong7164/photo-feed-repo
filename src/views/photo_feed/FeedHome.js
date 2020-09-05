@@ -2,16 +2,25 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
 
+//utils
 import URL from '../../api/url';
 import * as UTIL from '../../utils/functions/loacalStorage';
 import useInterSection from '../../utils/hooks/useIntersection';
 
-import BookMark from './components/Bookmark';
+//views
+import Feed from './components/Feed';
 
+//css
 import '../../assets/styles/styles.css';
 
+/*
+  사진 피드 목록
+*/
 const FeedHome = () => {
+  //마지막 페이지여부
   const [isLast, setIsLast] = useState(false);
+
+  //사진 피드 데이터
   const [feedData, setFeedData] = useState([
     {
       id: '',
@@ -20,36 +29,43 @@ const FeedHome = () => {
       profile_image_url: '',
     },
   ]);
-  const [isLoading, setIsLoading] = useState(false);
+
+  //페이지
   const [page, setPage] = useState(1);
+
+  //스크랩만보기 활성여부
   const [isOnlyBookmarked, setIsOnlyBookmarked] = useState(false);
 
+  //뷰포트에서 요소가 감지된다면 다음 페이지 불러온다
   const [_, setRef] = useInterSection(async (entry, observer) => {
     observer.unobserve(entry.target);
-    setIsLoading(true);
     setPage((states) => states + 1);
   }, {});
 
+  //스크랩된 이미지인지 확인
   const isBookmarkedData = (id) => {
     const obj = UTIL.getLSBookmarkData(id);
     return id in obj && obj[id];
   };
 
+  //page 값이 변할때마다 사진 피드 데이터 불러오기 및 데이터 셋팅
   useEffect(() => {
     const getFeedData = async (page) => {
-      setIsLoading(true);
       try {
+        //사진 리스트 정보 받기
         const response = await axios.get(URL.GET_PHOTO_LIST(page));
         if (response.status === 200 && Array.isArray(response.data)) {
           const feed = response.data;
-          setIsLoading(false);
+
+          //데이터가 있으면 데이터 셋팅
           if (feed.length > 0) {
             if (page === 1) {
               setFeedData(feed);
             } else {
               setFeedData((states) => states.concat(feed));
             }
-            console.log('feed', feedData);
+
+            //데이터가 빈값이면 중단
           } else {
             setIsLast(true);
           }
@@ -85,19 +101,7 @@ const FeedHome = () => {
               return (
                 <>
                   {isActive && (
-                    <li className="box" key={feed.id}>
-                      <span>
-                        <div className="profile">
-                          <img src={feed.profile_image_url} alt=""></img>
-                          <p>{feed.nickname + '/' + feed.id}</p>
-                        </div>
-                        <img className="boxImg" src={feed.image_url} alt="" />
-                        <BookMark
-                          id={feed.id}
-                          isOnlyBookmarked={isOnlyBookmarked}
-                        />
-                      </span>
-                    </li>
+                    <Feed isOnlyBookmarked={isOnlyBookmarked} feed={feed} />
                   )}
                   <div
                     ref={i === feedData.length - 1 && !isLast ? setRef : null}

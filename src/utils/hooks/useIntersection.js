@@ -1,14 +1,15 @@
-import * as React from "react";
-import { useState, useEffect, useCallback } from "react";
-import "intersection-observer"; // For IE
+import * as React from 'react';
+import { useState, useEffect, useCallback } from 'react';
+import 'intersection-observer'; // For IE
 
 const baseOption = {
   root: null, // 부모가 되는 element
   threshold: 0.5, // 겹치는 정도.
-  rootMargin: "0px" // rootMargin 이 있으면, threshold 계산할 때, rootMargin 영역 만큼 더 계산.
+  rootMargin: '0px', // rootMargin 이 있으면, threshold 계산할 때, rootMargin 영역 만큼 더 계산.
 };
 
 const useInterSection = (onIntersect, option) => {
+  console.log(onIntersect, option);
   const [ref, setRef] = useState(null);
   const checkIntersect = useCallback(([entry], observer) => {
     if (entry.isIntersecting) {
@@ -20,7 +21,7 @@ const useInterSection = (onIntersect, option) => {
     if (ref) {
       observer = new IntersectionObserver(checkIntersect, {
         ...baseOption,
-        ...option
+        ...option,
       });
       observer.observe(ref);
     }
