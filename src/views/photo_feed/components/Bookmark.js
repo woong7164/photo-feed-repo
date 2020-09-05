@@ -2,23 +2,19 @@
 import * as React from 'react';
 import { useState, useRef, useEffect, useCallback } from 'react';
 
+import * as UTIL from '../../../utils/functions/loacalStorage';
+
 const BookMark = ({ id, isOnlyBookmarked }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
   const LS_BOOKMARK_KEY = 'bk_data';
 
-  const getLSBookmarkData = () => {
-    const bkData = localStorage.getItem(LS_BOOKMARK_KEY);
-    let obj = bkData === null ? {} : JSON.parse(bkData);
-    return obj;
-  };
-
   const getIsBookmarked = (id) => {
-    const obj = getLSBookmarkData();
+    const obj = UTIL.getLSBookmarkData();
     setIsBookmarked(id in obj && obj[id]);
   };
 
   const onClickBookmark = (id) => {
-    const obj = getLSBookmarkData();
+    const obj = UTIL.getLSBookmarkData();
     if (id in obj) {
       delete obj[id];
     } else {

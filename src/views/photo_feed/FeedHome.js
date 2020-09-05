@@ -3,7 +3,8 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 import URL from '../../api/url';
-import useInterSection from '../../hooks/useIntersection';
+import * as UTIL from '../../utils/functions/loacalStorage';
+import useInterSection from '../../utils/hooks/useIntersection';
 
 import BookMark from './components/Bookmark';
 
@@ -28,6 +29,11 @@ const FeedHome = () => {
     setIsLoading(true);
     setPage((states) => states + 1);
   }, {});
+
+  const isBookmarkedData = (id) => {
+    const obj = UTIL.getLSBookmarkData(id);
+    return id in obj && obj[id];
+  };
 
   useEffect(() => {
     const getFeedData = async (page) => {
@@ -73,24 +79,30 @@ const FeedHome = () => {
         <div className="feedWrapper">
           <ul>
             {feedData.map((feed, i) => {
+              const isActive = isOnlyBookmarked
+                ? isBookmarkedData(feed.id)
+                : true;
               return (
-                <li
-                  className="box"
-                  key={feed.id}
-                  ref={i === feedData.length - 1 && !isLast ? setRef : null}
-                >
-                  <span>
-                    <div className="profile">
-                      <img src={feed.profile_image_url} alt=""></img>
-                      <p>{feed.nickname + '/' + feed.id}</p>
-                    </div>
-                    <img className="boxImg" src={feed.image_url} alt="" />
-                    <BookMark
-                      id={feed.id}
-                      isOnlyBookmarked={isOnlyBookmarked}
-                    />
-                  </span>
-                </li>
+                <>
+                  {isActive && (
+                    <li className="box" key={feed.id}>
+                      <span>
+                        <div className="profile">
+                          <img src={feed.profile_image_url} alt=""></img>
+                          <p>{feed.nickname + '/' + feed.id}</p>
+                        </div>
+                        <img className="boxImg" src={feed.image_url} alt="" />
+                        <BookMark
+                          id={feed.id}
+                          isOnlyBookmarked={isOnlyBookmarked}
+                        />
+                      </span>
+                    </li>
+                  )}
+                  <div
+                    ref={i === feedData.length - 1 && !isLast ? setRef : null}
+                  ></div>
+                </>
               );
             })}
           </ul>
