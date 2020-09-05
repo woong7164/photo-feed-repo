@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
 //views
-import FeedHome from "./photo_feed/FeedHome";
+import FeedHome from '$VIEWS/photo_feed/FeedHome';
 
 export default function App() {
   return (

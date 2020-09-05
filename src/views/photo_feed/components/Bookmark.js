@@ -3,8 +3,8 @@ import * as React from 'react';
 import { useState, useEffect } from 'react';
 
 //utils
-import * as UTIL from '../../../utils/functions/loacalStorage';
-import CONSTANTS from '../../../constants/key';
+import * as UTIL from '$UTILS/functions/loacalStorage';
+import CONSTANTS from '$CONST/key';
 
 /**
  * 스크랩 컴포넌트

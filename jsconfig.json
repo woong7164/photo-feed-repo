@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "$SRC": ["./src"],
+      "$VIEWS": ["./src/views"],
+      "$UTILS": ["./src/utils"],
+      "$CONST": ["./src/constants"],
+      "$API": ["./src/api"],
+      "$ASSETS": ["./src/assets"]
+    }
+  }
+}

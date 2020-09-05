@@ -3,15 +3,15 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 //utils
-import URL from '../../api/url';
-import * as UTIL from '../../utils/functions/loacalStorage';
-import useInterSection from '../../utils/hooks/useIntersection';
+import URL from '$API/url';
+import * as UTIL from '$UTILS/functions/loacalStorage';
+import useInterSection from '$UTILS/hooks/useIntersection';
 
 //views
 import Feed from './components/Feed';
 
 //css
-import '../../assets/styles/styles.css';
+import '$ASSETS/styles/styles.css';
 
 /*
   사진 피드 목록
