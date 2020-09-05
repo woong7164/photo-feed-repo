@@ -4,7 +4,7 @@
 
 `npm start`
 
-## 디렉타리 구조
+## 디렉터리 구조
 
 ```bash
 ├── README.md
