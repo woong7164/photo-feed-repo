@@ -10,7 +10,7 @@ import CONSTANTS from '$CONST/key';
  * 스크랩 컴포넌트
  * @props id : 사진 아이디
  */
-const BookMark = ({ id }) => {
+const BookMark = ({ id, setIsDeleted }) => {
   //스크랩 여부
   const [isBookmarked, setIsBookmarked] = useState(false);
 
@@ -29,12 +29,15 @@ const BookMark = ({ id }) => {
    */
   const onClickBookmark = (id) => {
     const obj = UTIL.getLSBookmarkData();
+    let isDeleted = false;
     if (id in obj) {
       delete obj[id];
+      isDeleted = true;
     } else {
       obj[id] = true;
     }
     localStorage.setItem(CONSTANTS.LS_BOOKMARK_KEY, JSON.stringify(obj));
+    setIsDeleted(isDeleted);
 
     //로컬스토리지 저장 후 isBookmarked 변경
     getIsBookmarked(id);
