@@ -9,6 +9,7 @@ import CONSTANTS from '$CONST/key';
 /**
  * 스크랩 컴포넌트
  * @props id : 사진 아이디
+ * @props setIsDeleted : 스크랩 삭제 여부 지정 함수
  */
 const BookMark = ({ id, setIsDeleted }) => {
   //스크랩 여부

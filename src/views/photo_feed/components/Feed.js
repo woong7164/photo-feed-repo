@@ -6,6 +6,7 @@ import BookMark from './Bookmark';
 /**
  *  사진 피드 단일요소 콤포넌트
  * @props feed : 사진 아이디
+ * @props isOnlyBookmarked: 스크랩만 보기 활성여부
  */
 const Feed = ({ feed, isOnlyBookmarked }) => {
   const [isDeleted, setIsDeleted] = useState(false);
