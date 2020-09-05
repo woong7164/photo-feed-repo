@@ -3,11 +3,79 @@
   text-align: center;
 }
 
- section {
+section {
   display: block;
 }
 
-html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+abbr,
+address,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+samp,
+small,
+strong,
+sub,
+sup,
+var,
+b,
+i,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary,
+time,
+mark,
+audio,
+video {
   margin: 0;
   padding: 0;
   border: 0;
@@ -17,7 +85,8 @@ html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pr
   background: transparent;
 }
 
-ul, ol {
+ul,
+ol {
   list-style: none;
 }
 
@@ -46,8 +115,8 @@ button {
   overflow: hidden;
 }
 
-.feedWrapper{
-  margin: 0 -.5rem;
+.feedWrapper {
+  margin: 0 -0.5rem;
 }
 
 .wrapper .checkbox {
@@ -69,40 +138,41 @@ button {
   line-height: normal;
   letter-spacing: normal;
   color: #424242;
-  padding: 1rem 3rem;
+  padding: 1.2rem 3rem;
   cursor: pointer;
 }
 
-.wrapper input[type="checkbox"] {
+.wrapper input[type='checkbox'] {
   position: absolute;
-  width: .1rem;
-  height: .1rem;
+  width: 0.1rem;
+  height: 0.1rem;
   padding: 0;
-  margin: -.1rem;
+  margin: -0.1rem;
   overflow: hidden;
   clip: rect(0, 0, 0, 0);
   border: 0;
 }
 
-.wrapper input[type="checkbox"]:checked + span:after {
-  content: "";
+.wrapper input[type='checkbox']:checked + span:after {
+  content: '';
   background: url(/icons/bt_checkbox_checked.svg) center no-repeat;
 }
 
 .wrapper label span:after {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   left: 0;
-  top: .4rem;
+  top: 0.4rem;
   width: 2.8rem;
   height: 2.8rem;
-  background: url(//openimage.interpark.com/tour-mobile/pages/fit/place/check_off.png) center no-repeat;
+  background: url(//openimage.interpark.com/tour-mobile/pages/fit/place/check_off.png)
+    center no-repeat;
   background-size: 70%;
 }
 
 .wrapper .profile img {
-  content: "";
+  content: '';
   display: block;
   position: absolute;
   left: 0.8rem;
@@ -179,15 +249,15 @@ button {
   height: auto;
 }
 
- .btnDibs.active img:first-child {
+.btnDibs.active img:first-child {
   display: none;
 }
 
- .btnDibs.active img:last-child {
+.btnDibs.active img:last-child {
   display: inline-block;
 }
 
- .btnDibs img:last-child {
+.btnDibs img:last-child {
   display: none;
 }
 
@@ -196,71 +266,5 @@ button {
   display: block;
   font-size: 1.3rem;
   color: #999;
-  padding: .2rem .5rem;
+  padding: 0.2rem 0.5rem;
 }
-
-/*
-.container {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-content: center;
-}
-
-
-
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-
-.box {
-  position: relative;
-  width: auto;
-  padding: 10px;
-  margin: 10px;
-  display: flex;
-  align-items: center;
-}
-
-.box img {
-  width: 268px;
-  height: 268px;
-  border-radius: 10px;
-}
-
-.btnDibs {
-  position: absolute;
-  bottom: -0.1rem;
-  right: 0.1rem;
-  padding: 1rem;
-  z-index: 9;
-}
-
-.btnDibs img {
-  display: block;
-  width: 2.2rem;
-  height: auto;
-  border-radius: 0;
-}
-
- .btnDibs.active img:first-child {
-  display: none;
-}
-
- .btnDibs.active img:last-child {
-  display: inline-block;
-}
-
- .btnDibs img {
-  display: block;
-  width: 2.2rem;
-  height: auto;
-  border-radius: 0;
-}
-
- .btnDibs img:last-child {
-  display: none;
-}
-*/

@@ -1,23 +1,51 @@
 // react
-import * as React from "react";
-import { useState, useRef, useEffect, useCallback } from "react";
+import * as React from 'react';
+import { useState, useRef, useEffect, useCallback } from 'react';
 
-const BookMark = ({ bookmarkFlag, onClickBookMark, cd }) => {
+const BookMark = ({ id, isOnlyBookmarked }) => {
+  const [isBookmarked, setIsBookmarked] = useState(false);
+  const LS_BOOKMARK_KEY = 'bk_data';
+
+  const getLSBookmarkData = () => {
+    const bkData = localStorage.getItem(LS_BOOKMARK_KEY);
+    let obj = bkData === null ? {} : JSON.parse(bkData);
+    return obj;
+  };
+
+  const getIsBookmarked = (id) => {
+    const obj = getLSBookmarkData();
+    setIsBookmarked(id in obj && obj[id]);
+  };
+
+  const onClickBookmark = (id) => {
+    const obj = getLSBookmarkData();
+    if (id in obj) {
+      delete obj[id];
+    } else {
+      obj[id] = true;
+    }
+    localStorage.setItem(LS_BOOKMARK_KEY, JSON.stringify(obj));
+    getIsBookmarked(id);
+  };
+
+  useEffect(() => {
+    if (id) {
+      console.log('id  ', id);
+      getIsBookmarked(id);
+    }
+  }, [id]);
+
   return (
-    <button
-      onClick={() => onClickBookMark(bookmarkFlag, cd)}
-      type="button"
-      className={`btnDibs ${bookmarkFlag === "Y" ? "active" : ""}`}
-    >
-      <img
-        src="/icons/icon_dib_off.svg"
-        alt="찜 리스트에 추가하기"
-      />
-      <img
-        src="/icons/con_dib_on.svg"
-        alt="찜 리스트에서 삭제하기"
-      />
-    </button>
+    <>
+      <button
+        onClick={() => onClickBookmark(id)}
+        type="button"
+        className={`btnDibs ${isBookmarked ? 'active' : ''}`}
+      >
+        <img src="/icons/icon_dib_off.svg" alt="찜 리스트에 추가하기" />
+        <img src="/icons/con_dib_on.svg" alt="찜 리스트에서 삭제하기" />
+      </button>
+    </>
   );
 };
 
