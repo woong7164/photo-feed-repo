@@ -11,7 +11,7 @@ import useInterSection from '$UTILS/hooks/useIntersection';
 import Feed from './components/Feed';
 
 //css
-import '$ASSETS/styles/styles.css';
+import '$ASSETS/styles/feedHome.css';
 
 /*
   사진 피드 목록
